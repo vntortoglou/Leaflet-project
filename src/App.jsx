@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const App = () => {
   return (
+    <>
     <div style={{ height: '100vh', width: '100vw' }}>
       <MapContainer
         center={[51.505, -0.09]}
@@ -20,6 +21,7 @@ const App = () => {
         </Marker>
       </MapContainer>
     </div>
+    </>
   );
 };
 
