@@ -7,8 +7,6 @@ import { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 
 const App = () => {
-
-
   // START : Getting the Current position to set as Map Default
   const [position, setPosition] = useState(null);
 
@@ -27,20 +25,19 @@ const App = () => {
       }
     );
   }, []);
-    // END : Getting the Current position to set as Map Default
+  // END : Getting the Current position to set as Map Default
 
-    function FlyToLocation({ position }) {
-  const map = useMap();
+  function FlyToLocation({ position }) {
+    const map = useMap();
 
-  useEffect(() => {
-    if (position) {
-      map.flyTo([position.latitude, position.longitude], 13);
-    }
-  }, [position]);
+    useEffect(() => {
+      if (position) {
+        map.flyTo([position.latitude, position.longitude], 13);
+      }
+    }, [position, map]);
 
-  return null;
-}
-    
+    return null;
+  }
 
   return (
     <div className="flex h-screen w-screen">
@@ -60,6 +57,7 @@ const App = () => {
             scrollWheelZoom={true}
             className="h-full w-full"
           >
+            <FlyToLocation position={position} />
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
